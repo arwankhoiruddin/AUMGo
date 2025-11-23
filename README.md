@@ -132,7 +132,7 @@ Database terdiri dari 20 tabel utama:
 
 - PHP >= 8.2
 - Composer
-- Node.js >= 18.x dan npm
+- Node.js >= 18.x and npm
 - MySQL/MariaDB
 - Web Server (Apache/Nginx)
 
@@ -149,7 +149,7 @@ cd AUMGo
 composer install
 ```
 
-3. Install Node.js dependencies dan build frontend assets:
+3. Install Node.js dependencies and build frontend assets:
 ```bash
 npm install
 npm run build
