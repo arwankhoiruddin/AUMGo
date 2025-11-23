@@ -132,6 +132,7 @@ Database terdiri dari 20 tabel utama:
 
 - PHP >= 8.2
 - Composer
+- Node.js >= 18.x dan npm
 - MySQL/MariaDB
 - Web Server (Apache/Nginx)
 
@@ -143,22 +144,28 @@ git clone https://github.com/arwankhoiruddin/AUMGo.git
 cd AUMGo
 ```
 
-2. Install dependencies:
+2. Install PHP dependencies:
 ```bash
 composer install
 ```
 
-3. Copy environment file:
+3. Install Node.js dependencies dan build frontend assets:
+```bash
+npm install
+npm run build
+```
+
+4. Copy environment file:
 ```bash
 cp .env.example .env
 ```
 
-4. Generate application key:
+5. Generate application key:
 ```bash
 php artisan key:generate
 ```
 
-5. Konfigurasi database di file `.env`:
+6. Konfigurasi database di file `.env`:
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -168,7 +175,7 @@ DB_USERNAME=root
 DB_PASSWORD=your_password
 ```
 
-6. Buat database dan import SQL file:
+7. Buat database dan import SQL file:
 ```bash
 mysql -u root -p
 CREATE DATABASE aumgo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -177,7 +184,7 @@ SOURCE database/sql/aumgo_database.sql;
 exit;
 ```
 
-7. Jalankan aplikasi:
+8. Jalankan aplikasi:
 ```bash
 php artisan serve
 ```
