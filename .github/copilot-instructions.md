@@ -184,7 +184,7 @@ routes/
 
 - **UI/UX**: Bahasa Indonesia
 - **Kode dan Comments**: Campuran Indonesia (untuk bisnis logic) dan Inggris (untuk technical implementation)
-- **Error Messages**: Bahasa Indonesia, user-friendly
+- **Error Messages**: Bahasa Indonesia, mudah dipahami pengguna
 - **Database**: Nama kolom bisa Bahasa Indonesia atau Inggris yang jelas
 
 ## Performance Considerations
@@ -200,6 +200,6 @@ Saat membuat kode untuk proyek ini:
 1. Prioritaskan kesederhanaan dan maintainability
 2. Ikuti Laravel conventions
 3. Gunakan AdminLTE components untuk UI consistency
-4. Pertimbangkan user experience untuk pengguna non-teknis
+4. Pertimbangkan pengalaman pengguna untuk pengguna non-teknis
 5. Dokumentasi yang jelas untuk fitur yang kompleks
 6. Validasi data dengan ketat untuk menjaga integritas data
