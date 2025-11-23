@@ -88,20 +88,4 @@ Sistem Informasi Manajemen untuk administrasi persuratan:
 
 ## Teknologi
 
-(Akan diperbarui sesuai dengan stack teknologi yang dipilih)
-
-## Instalasi
-
-(Akan diperbarui dengan panduan instalasi)
-
-## Kontribusi
-
-Kontribusi untuk pengembangan sistem ini sangat diterima. Silakan buat pull request atau buka issue untuk diskusi fitur dan perbaikan.
-
-## Lisensi
-
-(Akan diperbarui dengan informasi lisensi)
-
-## Kontak
-
-Untuk informasi lebih lanjut mengenai sistem ini, silakan hubungi Pimpinan Cabang Muhammadiyah Gombong, Jawa Tengah.
+Laravel dan AdminLTE
