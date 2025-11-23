@@ -54,7 +54,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('home') }}" class="brand-link">
-            <img src="https://via.placeholder.com/50x50.png/007bff/ffffff?text=A" alt="AUMGo Logo" class="brand-image img-circle elevation-3">
+            <span class="brand-image img-circle elevation-3 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 33px; height: 33px; font-weight: bold;">A</span>
             <span class="brand-text font-weight-light">{{ config('app.name', 'AUMGo') }}</span>
         </a>
 
@@ -63,7 +63,9 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="https://via.placeholder.com/160x160.png/007bff/ffffff?text={{ substr(Auth::user()->name, 0, 1) }}" class="img-circle elevation-2" alt="User Image">
+                    <div class="img-circle elevation-2 bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 34px; height: 34px; font-weight: bold;">
+                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                    </div>
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">{{ Auth::user()->name }}</a>
