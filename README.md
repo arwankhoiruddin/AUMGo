@@ -88,4 +88,134 @@ Sistem Informasi Manajemen untuk administrasi persuratan:
 
 ## Teknologi
 
-Laravel dan AdminLTE
+- **Framework**: Laravel 12
+- **Database**: MySQL/MariaDB
+- **Frontend**: AdminLTE (planned)
+- **PHP Version**: 8.2+
+
+## Database
+
+Database lengkap telah dibuat dalam file SQL tunggal. Untuk informasi lebih lanjut:
+
+- **File Database**: `database/sql/aumgo_database.sql`
+- **Dokumentasi Database**: `database/sql/README.md`
+- **ERD dan Relasi**: `database/sql/ERD_DESCRIPTION.md`
+
+### Struktur Database
+
+Database terdiri dari 20 tabel utama:
+
+1. `prm` - Pimpinan Ranting Muhammadiyah
+2. `pra` - Pimpinan Ranting Aisyiyah
+3. `kpi_ortom` - KPI Organisasi Otonom
+4. `kpi_majelis` - KPI Majelis
+5. `amal_usaha` - Data AUM
+6. `masjid_musholla` - Detail Masjid dan Musholla
+7. `dokumen_legal` - Dokumen Legal AUM
+8. `inventaris_aset` - Inventaris Aset AUM
+9. `struktur_organisasi_aum` - Struktur Organisasi AUM
+10. `kepegawaian` - Data Kepegawaian
+11. `pengajian` - Data Pengajian
+12. `absensi_pengajian` - Absensi Pengajian
+13. `surat_masuk` - Surat Masuk
+14. `surat_keluar` - Surat Keluar
+15. `wakif` - Data Wakif
+16. `tanah_wakaf` - Data Tanah Wakaf
+17. `anggota_muhammadiyah` - Data Anggota
+18. `users` - User System
+19. `password_reset_tokens` - Password Reset
+20. `sessions` - Session Management
+
+## Instalasi
+
+### Requirements
+
+- PHP >= 8.2
+- Composer
+- MySQL/MariaDB
+- Web Server (Apache/Nginx)
+
+### Langkah Instalasi
+
+1. Clone repository:
+```bash
+git clone https://github.com/arwankhoiruddin/AUMGo.git
+cd AUMGo
+```
+
+2. Install dependencies:
+```bash
+composer install
+```
+
+3. Copy environment file:
+```bash
+cp .env.example .env
+```
+
+4. Generate application key:
+```bash
+php artisan key:generate
+```
+
+5. Konfigurasi database di file `.env`:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=aumgo
+DB_USERNAME=root
+DB_PASSWORD=your_password
+```
+
+6. Buat database dan import SQL file:
+```bash
+mysql -u root -p
+CREATE DATABASE aumgo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE aumgo;
+SOURCE database/sql/aumgo_database.sql;
+exit;
+```
+
+7. Jalankan aplikasi:
+```bash
+php artisan serve
+```
+
+Aplikasi akan berjalan di `http://localhost:8000`
+
+### Login Default
+
+- Email: `admin@aumgo.com`
+- Password: `password`
+
+**PENTING**: Segera ganti password default setelah login pertama kali!
+
+## Development
+
+### Running Tests
+```bash
+php artisan test
+```
+
+### Code Style
+```bash
+./vendor/bin/pint
+```
+
+### Database Backup
+```bash
+mysqldump -u root -p aumgo > backup_aumgo_$(date +%Y%m%d).sql
+```
+
+## Kontribusi
+
+Kontribusi selalu diterima! Silakan fork repository ini dan submit pull request.
+
+## Lisensi
+
+Proyek ini dikembangkan untuk PCM Gombong, Jawa Tengah.
+
+## Kontak
+
+Untuk pertanyaan atau bantuan, silakan hubungi tim pengembang AUMGo.
