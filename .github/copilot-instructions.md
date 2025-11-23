@@ -10,7 +10,7 @@ AUMGo is a Laravel-based web application for managing data and information of Mu
 
 - **Framework Backend**: Laravel (PHP)
 - **Frontend Template**: AdminLTE
-- **Database**: MySQL/MariaDB (assumed based on Laravel standard)
+- **Database**: MySQL/MariaDB
 - **Bahasa Utama**: Indonesia
 - **Primary Language**: Indonesian (Bahasa Indonesia)
 
@@ -102,7 +102,7 @@ class StoreAmalUsahaRequest extends FormRequest
 
 - Gunakan AdminLTE components untuk konsistensi UI
 - Pisahkan layout, partials, dan content views
-- Gunakan `@include`, `@extends`, `@section` dengan proper
+- Gunakan `@include`, `@extends`, `@section` dengan benar
 - Format tanggal menggunakan format Indonesia (d/m/Y atau sesuai kebutuhan)
 
 ### Authorization dan Authentication
