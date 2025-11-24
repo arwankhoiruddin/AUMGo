@@ -244,7 +244,7 @@ Jika mengalami kendala:
 
 - Laravel Documentation: https://laravel.com/docs/12.x
 - AdminLTE Documentation: https://adminlte.io/docs/4.0/
-- Vite Documentation: https://vite.dev/
+- Vite Documentation: https://vitejs.dev/
 
 ---
 

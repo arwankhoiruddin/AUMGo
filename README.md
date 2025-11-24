@@ -2,7 +2,7 @@
 
 Sistem Informasi Amal Usaha Muhammadiyah (AUMGo) adalah aplikasi untuk mengelola data dan informasi amal usaha Muhammadiyah di Pimpinan Cabang Muhammadiyah (PCM) Gombong, Jawa Tengah.
 
-> **⚠️ PENTING**: Setelah clone repository, pastikan menjalankan `npm install && npm run build` agar tampilan AdminLTE berfungsi dengan benar!
+> **⚠️ PENTING**: Setelah mengkloning repository, pastikan menjalankan `npm install && npm run build` agar tampilan AdminLTE berfungsi dengan benar!
 > 
 > 📖 **Panduan Lengkap**: Lihat [QUICK_START.md](QUICK_START.md) untuk langkah-langkah instalasi detail dan troubleshooting.
 
