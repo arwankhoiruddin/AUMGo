@@ -1,5 +1,87 @@
 # Release Notes
 
+## AUMGo Project Changelog
+
+### [Unreleased] - 2024-11-24
+
+#### Fixed
+- **Critical:** Fixed `SQLSTATE[42S02]: Table 'aumgo.cache' doesn't exist` error during login
+  - Added missing Laravel framework tables to `database/sql/aumgo_database.sql`
+  - Added `cache` and `cache_locks` tables for database caching
+  - Added `jobs`, `job_batches`, and `failed_jobs` tables for queue system
+  - Updated documentation to reflect 25 total tables (was 20)
+  - Added comprehensive test suite to validate SQL file structure
+
+#### Migration Guide for Existing Installations
+If you have already imported the database before this update, you need to add the missing tables. You have two options:
+
+**Option 1: Run Laravel Migrations (Recommended)**
+```bash
+php artisan migrate
+```
+
+**Option 2: Add Tables Manually**
+Execute the following SQL commands:
+```sql
+-- Cache tables
+CREATE TABLE IF NOT EXISTS `cache` (
+  `key` varchar(255) NOT NULL,
+  `value` mediumtext NOT NULL,
+  `expiration` int(11) NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `cache_locks` (
+  `key` varchar(255) NOT NULL,
+  `owner` varchar(255) NOT NULL,
+  `expiration` int(11) NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Queue tables
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `jobs_queue_index` (`queue`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `job_batches` (
+  `id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `total_jobs` int(11) NOT NULL,
+  `pending_jobs` int(11) NOT NULL,
+  `failed_jobs` int(11) NOT NULL,
+  `failed_job_ids` longtext NOT NULL,
+  `options` mediumtext DEFAULT NULL,
+  `cancelled_at` int(11) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `finished_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
+---
+
+## Laravel Framework Changelog
+
 ## [Unreleased](https://github.com/laravel/laravel/compare/v12.10.0...12.x)
 
 ## [v12.10.0](https://github.com/laravel/laravel/compare/v12.9.1...v12.10.0) - 2025-11-04

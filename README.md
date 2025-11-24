@@ -103,7 +103,7 @@ Database lengkap telah dibuat dalam file SQL tunggal. Untuk informasi lebih lanj
 
 ### Struktur Database
 
-Database terdiri dari 20 tabel utama:
+Database terdiri dari 25 tabel:
 
 1. `prm` - Pimpinan Ranting Muhammadiyah
 2. `pra` - Pimpinan Ranting Aisyiyah
@@ -125,6 +125,11 @@ Database terdiri dari 20 tabel utama:
 18. `users` - User System
 19. `password_reset_tokens` - Password Reset
 20. `sessions` - Session Management
+21. `cache` - Cache System (Laravel)
+22. `cache_locks` - Cache Locks (Laravel)
+23. `jobs` - Queue Jobs (Laravel)
+24. `job_batches` - Job Batches (Laravel)
+25. `failed_jobs` - Failed Jobs (Laravel)
 
 ## Instalasi
 
