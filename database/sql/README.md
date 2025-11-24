@@ -6,7 +6,7 @@ File `aumgo_database.sql` berisi struktur database lengkap untuk Sistem Informas
 
 ## Isi Database
 
-Database ini mencakup 20 tabel utama untuk mengelola:
+Database ini mencakup 25 tabel untuk mengelola:
 
 ### 1. Struktur Organisasi
 - **prm**: Pimpinan Ranting Muhammadiyah
@@ -39,10 +39,15 @@ Database ini mencakup 20 tabel utama untuk mengelola:
 ### 7. Keanggotaan
 - **anggota_muhammadiyah**: Database anggota Muhammadiyah
 
-### 8. Sistem
+### 8. Sistem dan Framework Laravel
 - **users**: User untuk login dan akses sistem
 - **password_reset_tokens**: Token reset password
 - **sessions**: Session management
+- **cache**: Cache sistem Laravel (untuk database caching)
+- **cache_locks**: Lock mechanism untuk cache
+- **jobs**: Queue jobs Laravel
+- **job_batches**: Batch jobs Laravel
+- **failed_jobs**: Log job yang gagal
 
 ## Cara Menggunakan
 
