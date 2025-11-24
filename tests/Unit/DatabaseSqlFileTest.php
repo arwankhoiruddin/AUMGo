@@ -94,20 +94,28 @@ class DatabaseSqlFileTest extends TestCase
     {
         $sqlContent = file_get_contents($this->sqlFilePath);
 
-        // Extract cache table definition
-        preg_match(
-            '/CREATE TABLE IF NOT EXISTS `cache`\s*\((.*?)\)\s*ENGINE=/s',
+        // More robust approach: Look for the cache table section
+        // and verify required columns exist within it
+        $this->assertStringContainsString(
+            'CREATE TABLE IF NOT EXISTS `cache`',
             $sqlContent,
-            $matches
+            'Cache table definition should exist'
         );
 
-        $this->assertNotEmpty($matches, 'Cache table definition should be found');
+        // Find the position of cache table definition
+        $cacheTableStart = strpos($sqlContent, 'CREATE TABLE IF NOT EXISTS `cache`');
+        $nextTableStart = strpos($sqlContent, 'CREATE TABLE IF NOT EXISTS', $cacheTableStart + 1);
+        
+        // Extract cache table section
+        if ($nextTableStart !== false) {
+            $cacheTableSection = substr($sqlContent, $cacheTableStart, $nextTableStart - $cacheTableStart);
+        } else {
+            $cacheTableSection = substr($sqlContent, $cacheTableStart);
+        }
 
-        $tableDef = $matches[1];
-
-        $this->assertStringContainsString('`key`', $tableDef, 'Cache table should have key column');
-        $this->assertStringContainsString('`value`', $tableDef, 'Cache table should have value column');
-        $this->assertStringContainsString('`expiration`', $tableDef, 'Cache table should have expiration column');
+        $this->assertStringContainsString('`key`', $cacheTableSection, 'Cache table should have key column');
+        $this->assertStringContainsString('`value`', $cacheTableSection, 'Cache table should have value column');
+        $this->assertStringContainsString('`expiration`', $cacheTableSection, 'Cache table should have expiration column');
     }
 
     /**
@@ -156,7 +164,13 @@ class DatabaseSqlFileTest extends TestCase
         // Count total CREATE TABLE statements
         $createTableCount = preg_match_all(
             '/CREATE TABLE IF NOT EXISTS/',
-            $sqlContent
+            $sqlContent,
+            $matches
+        );
+
+        $this->assertNotFalse(
+            $createTableCount,
+            'preg_match_all should succeed'
         );
 
         $this->assertEquals(
