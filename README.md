@@ -2,6 +2,10 @@
 
 Sistem Informasi Amal Usaha Muhammadiyah (AUMGo) adalah aplikasi untuk mengelola data dan informasi amal usaha Muhammadiyah di Pimpinan Cabang Muhammadiyah (PCM) Gombong, Jawa Tengah.
 
+> **⚠️ PENTING**: Setelah mengkloning repository, pastikan menjalankan `npm install && npm run build` agar tampilan AdminLTE berfungsi dengan benar!
+> 
+> 📖 **Panduan Lengkap**: Lihat [QUICK_START.md](QUICK_START.md) untuk langkah-langkah instalasi detail dan troubleshooting.
+
 ## Deskripsi
 
 Repository ini dibangun untuk mengembangkan sistem informasi yang komprehensif dalam mengelola berbagai aspek amal usaha Muhammadiyah, mulai dari data anggota, aset, hingga kegiatan organisasi di wilayah Gombong, Jawa Tengah.
@@ -160,6 +164,8 @@ npm install
 npm run build
 ```
 
+   **PENTING**: Langkah ini wajib dilakukan! Tanpa build, AdminLTE tidak akan tampil dengan benar dan halaman akan terlihat tanpa styling.
+
 4. Copy environment file:
 ```bash
 cp .env.example .env
@@ -218,6 +224,43 @@ php artisan test
 ### Database Backup
 ```bash
 mysqldump -u root -p aumgo > backup_aumgo_$(date +%Y%m%d).sql
+```
+
+## Troubleshooting
+
+### Halaman Tampil Tanpa Styling (AdminLTE Tidak Muncul)
+
+**Gejala**: Halaman web tampil tanpa CSS, menu sidebar dan navbar tidak terformat dengan benar.
+
+**Penyebab**: Frontend assets (CSS dan JavaScript) belum di-compile.
+
+**Solusi**:
+```bash
+npm install
+npm run build
+```
+
+Setelah itu restart development server:
+```bash
+php artisan serve
+```
+
+### Error "Vite manifest not found"
+
+**Penyebab**: File manifest.json di `public/build/` tidak ada karena assets belum di-build.
+
+**Solusi**: Jalankan `npm run build` untuk generate assets.
+
+### Perubahan CSS/JS Tidak Muncul
+
+Jika melakukan perubahan pada file CSS atau JS, jalankan kembali:
+```bash
+npm run build
+```
+
+Untuk development dengan auto-reload, gunakan:
+```bash
+npm run dev
 ```
 
 ## Kontribusi
